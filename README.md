@@ -1,3 +1,5 @@
+Ce projet fait partie d'un cours d'analyse de données utilisant Python. Les données à analyser sont celles des cinémas dans la région d'île de France, qui ont été prises du lien https://www.data.gouv.fr/en/datasets/etablissements-cinematographiques/
+
 Ce Fichier Readme contient des réponses aux questions des exercices #3 à #5. Il n'y avait pas de question à écrire dans ce fichier pour les premiers deux exercices - veuillez regarder tout le code dans le fichier 'main.py'
 
 Réponse à la question d'exercice #3
@@ -7,3 +9,7 @@ Basées sur les nuages de points créés pour montrer la corrélation entre écr
 Réponse à la question d'exercice #4
 
 Selon l'analyse du modèle créé avec les variables explicatives d'écrans, fauteuils, et population de la commune, ces trois variables apportent une bonne prédiction pour les entrées. Vu que le coefficient de détermination avait la valeur de 0.91745, ça veut dire que 91.7% de la variation des entrées peut-être expliqué par ces trois variables ensemble. Additionellement l'erreur moyenne absolue de la prédiction était de 34258, ce qui n'est pas une grande erreur tant qu'on parle des millions d'entrées pour plusieurs communes. Certes, la taille du dataset est trop petite pour conclure avec certitude, mais cette façon de modeler les entrées est efficace en ce cas. Vu que l'on n'a pas non plus une variable explicative pour l'année comme conséquence d'un manque de données, on peut noter que la prédiction des entrées de 2022 est pire que celle du split test 2021. Le coefficient de détermination et plus faible, et aussi l'erreur moyenne absolue est plus grande.
+
+Réponse à la question d'exercice #5
+
+Pour un cinéma qui souhaite augmenter les entrées vendues, ajouter plus de fauteuils et écrans est une bonne stratégie. Basé sur l'analyse des données des cinémas en Île de France, si on ajoute un écran dans un cinéma on espère environ 20800 d'entrées annuelles en plus, et si on ajoute un fauteuil en plus on espère une hausse de près de 38 entrées par an. Cela veut dire que l'on espère plus d'entrées si on augmente soit l'un soit l'autre de fauteuils ou d'écrans. Si on divise les entrées gagnées par un écran par les entrées gagnées par un fauteuil, on voit 20800 / 38 ~ 550, soit ajouter un écran en plus égalerait plus ou moins 550 fauteuils en plus. Néanmoins, il est important de maintenir l'équilibre entre quantité d'écrans et fauteuils, alors augmenter les deux serait ma recommandation, en favorisant les écrans quand possible parce que ça me semble plus rentable en moyenne.
