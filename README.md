@@ -1,3 +1,9 @@
+Ce Fichier Readme contient des réponses aux questions des exercices #3 à #5. Il n'y avait pas de question à écrire dans ce fichier pour les premiers deux exercices - veuillez regarder tout le code dans le fichier 'main.py'
 
 Réponse à la question d'exercice #3
+
 Basées sur les nuages de points créés pour montrer la corrélation entre écrans et entrées et entre fauteuils et entrées je dirais que le numéro d'écrans a le plus grand impact sur les entrées vendues. La plupart des valeurs est en bas à gauche des deux graphiques, mais pour les points dans celui des écrans il y avait une corrélation plus positive et en accord avec la ligne de régression. Dans le graphique des fauteuils, les points dans cette partie en bas à gauche étaient plutôt plats, et ne collaient pas autant avec la ligne affichée. En plus, la valeur de corrélation calculée était plus grande (près de la valeur 1) pour la relation entre écrans et entrées, ce qui renforce l'argument.
+
+Réponse à la question d'exercice #4
+
+Selon l'analyse du modèle créé avec les variables explicatives d'écrans, fauteuils, et population de la commune, ces trois variables apportent une bonne prédiction pour les entrées. Vu que le coefficient de détermination avait la valeur de 0.91745, ça veut dire que 91.7% de la variation des entrées peut-être expliqué par ces trois variables ensemble. Additionellement l'erreur moyenne absolue de la prédiction était de 34258, ce qui n'est pas une grande erreur tant qu'on parle des millions d'entrées pour plusieurs communes. Certes, la taille du dataset est trop petite pour conclure avec certitude, mais cette façon de modeler les entrées est efficace en ce cas. Vu que l'on n'a pas non plus une variable explicative pour l'année comme conséquence d'un manque de données, on peut noter que la prédiction des entrées de 2022 est pire que celle du split test 2021. Le coefficient de détermination et plus faible, et aussi l'erreur moyenne absolue est plus grande.

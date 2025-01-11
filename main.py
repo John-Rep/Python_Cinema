@@ -4,6 +4,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_absolute_error
 
 data = pd.read_csv("cinemas.csv")
 pd.set_option("display.max_columns", None)
@@ -84,3 +87,40 @@ data.plot(kind='scatter', x='fauteuils', y='entrées 2022 plot', alpha=.3,
 m, b = np.polyfit(data['fauteuils'], data['entrées 2022 plot'], 1)
 plt.plot(data['fauteuils'], m * data['fauteuils'] + b)
 plt.show()
+
+
+#Commencer Exercice #4
+
+#Séparer les données en variables explicatives et la variable cible
+model_exp = data_com[['écrans', 'fauteuils', 'population de la commune']]
+model_cib = data_com['entrées 2021']
+
+#Créer un model de régression linéaire
+model = LinearRegression()
+model.fit(model_exp, model_cib)
+
+#Afficher les données du modèle
+print(f"Les coefficients du modèle : {model.coef_}")
+print(f"L'intercept du modèle : {model.intercept_}")
+
+#Une prédiction d'essai pour vérifier que les valeurs sont bien calculées
+data_com['Prédiction'] = model.predict(model_exp)
+print(data_com[['entrées 2021', 'Prédiction', 'écrans','fauteuils','population de la commune']])
+
+#Séparer les données entre train et test split
+exp_train, exp_test, cib_train, cib_test = train_test_split(model_exp, model_cib, test_size=.2, random_state=100)
+#Entrainer un modèle avec les données train
+model2 = LinearRegression()
+model2.fit(exp_train, cib_train)
+
+#Tester les données avec les données test
+pred_test = model2.predict(exp_test)
+print("Prédiction test data des entrées 2021")
+print(f"Coefficient de détermination : {r2_score(cib_test, pred_test)}")
+print(f"Erreur Moyenne Absolue : {mean_absolute_error(cib_test, pred_test)}")
+
+#Tester les données avec les entrées de 2022
+model_pred = model.predict(model_exp)
+print("Prédiction des entrées 2022")
+print(f"Coefficient de détermination : {r2_score(data_com['entrées 2022'], model_pred)}")
+print(f"Erreur Moyenne Absolue : {mean_absolute_error(data_com['entrées 2022'], model_pred)}")
