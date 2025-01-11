@@ -2,7 +2,7 @@
 #Commencer Exercice #1
 
 import pandas as pd
-#import numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 
 data = pd.read_csv("cinemas.csv")
@@ -48,4 +48,35 @@ epf.set_ylabel('Entrées par fauteuil', fontsize=16)
 epf.set_title('Entrées par fauteuil des cinémas', fontsize=20)
 plt.setp(epf.get_xticklabels(), ha='right')
 plt.subplots_adjust(bottom=.4)
+plt.show()
+
+
+#Commencer Exercice #3
+
+#Les données contiennent déjà que les valeurs de 2022
+
+#Calculer les Corrélations entre écrans / fauteuils et les entrées pour l'année 2022
+ecran_corr = data['écrans'].corr(data['entrées 2022'])
+faut_corr = data['fauteuils'].corr(data['entrées 2022'])
+#Afficher les valeurs calculées
+print("Corrélation entre écrans et entrées en 2022 : {}".format(ecran_corr))
+print("Corrélation entre fauteuils et entrées en 2022 : {}".format(faut_corr))
+
+#Transformer les entrées pour rendre les valeurs plus lisibles dans une graphique
+data['entrées 2022 plot'] = data['entrées 2022'] / 1000000
+#Générer un nuage de points pour écrans vs entrées
+data.plot(kind='scatter', x='écrans', y='entrées 2022 plot', alpha=.3,
+          title="Entrées par écrans en 2022", ylabel="Entrées (Millions)",
+          xlabel="Écrans")
+#Calculer et ajouter la ligne de régression linéaire
+m, b = np.polyfit(data['écrans'], data['entrées 2022 plot'], 1)
+plt.plot(data['écrans'], m * data['écrans'] + b)
+plt.show()
+#Générer un nuage de points pour fauteuils vs entrées
+data.plot(kind='scatter', x='fauteuils', y='entrées 2022 plot', alpha=.3,
+          title="Entrées par fauteuils en 2022", ylabel="Entrées (Millions)",
+          xlabel="Fauteuils")
+#Calculer et ajouter la ligne de régression linéaire
+m, b = np.polyfit(data['fauteuils'], data['entrées 2022 plot'], 1)
+plt.plot(data['fauteuils'], m * data['fauteuils'] + b)
 plt.show()
